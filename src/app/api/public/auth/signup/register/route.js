@@ -1,0 +1,66 @@
+// /api/public/auth/signup/register/route.js
+import { NextResponse } from 'next/server';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import { connectMongo } from '@/lib/mongodb';
+import { User } from '@/models/user.model';
+import { redis } from '@/lib/redis';
+
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
+
+export async function POST(request) {
+  try {
+    const { username, email, password, role } = await request.json();
+    if (!username || !email || !password) {
+      return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
+    }
+    const verified = await redis.get(`otp_verified:${email}`);
+    if (!verified) {
+      return NextResponse.json({ error: 'Please verify your email first' }, { status: 403 });
+    }
+    await redis.del(`otp_verified:${email}`); 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json({ error: 'Invalid email format' }, { status: 400 });
+    }
+    if (password.length < 6) {
+      return NextResponse.json({ error: 'Password must be at least 6 characters' }, { status: 400 });
+    }
+
+    await connectMongo();
+
+    const userExists = await User.findOne({ $or: [{ email }, { username }] });
+    if (userExists) {
+      return NextResponse.json({ error: 'Email or username already exists' }, { status: 409 });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 12);
+    const allowedRoles = ['user', 'mod', 'admin'];
+    const safeRole = allowedRoles.includes(role) ? role : 'user';
+
+    const newUser = new User({ username, email, password: hashedPassword, role: safeRole });
+    await newUser.save();
+
+    const token = jwt.sign(
+      { userId: newUser._id, username, email, role: safeRole },
+      JWT_SECRET,
+      { expiresIn: '7d' }
+    );
+
+    return NextResponse.json({
+      success: true,
+      user: {
+        id: newUser._id,
+        username,
+        email,
+        role: safeRole,
+        createdAt: newUser.createdAt,
+      },
+      token,
+    }, { status: 201 });
+
+  } catch (error) {
+    console.error('Register error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+  }
+}
