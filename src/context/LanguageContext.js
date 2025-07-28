@@ -1,66 +1,58 @@
 'use client';
-import { createContext, useState, useContext, useEffect } from 'react';
-import enUS from '../language/en-US.json';
-import koKR from '../language/ko-KR.json';
-import zhCN from '../language/zh-CN.json';
-
-const languages = {
-  'en-US': enUS,
-  'ko-KR': koKR,
-  'zh-CN': zhCN
+import { createContext, useContext, useEffect, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import en from '@/language/en-US.json';
+import ko from '@/language/ko-KR.json';
+import zh from '@/language/zh-CN.json';
+const translations = {
+  'en-US': en,
+  'ko-KR': ko,
+  'zh-CN': zh,
+};
+const getNestedValue = (obj, key) => {
+  return key.split('.').reduce((acc, part) => acc?.[part], obj);
 };
 
 const LanguageContext = createContext();
 
-export const useLanguage = () => {
-  const context = useContext(LanguageContext);
-  if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
-  return context;
-};
-
-export const LanguageProvider = ({ children }) => {
+export function LanguageProvider({ children }) {
+  const router = useRouter();
+  const pathname = usePathname();
   const [currentLanguage, setCurrentLanguage] = useState('en-US');
-  const [translations, setTranslations] = useState(languages['en-US']);
 
   useEffect(() => {
-    // Get language from localStorage or browser preference
-    const savedLanguage = localStorage.getItem('language');
-    const browserLanguage = navigator.language;
-    const initialLanguage = savedLanguage || browserLanguage || 'en-US';
-    
-    setCurrentLanguage(initialLanguage);
-    setTranslations(languages[initialLanguage] || languages['en-US']);
-  }, []);
+    const segments = pathname.split('/');
+    const langFromURL = segments[1];
 
-  const changeLanguage = (languageCode) => {
-    if (languages[languageCode]) {
-      setCurrentLanguage(languageCode);
-      setTranslations(languages[languageCode]);
-      localStorage.setItem('language', languageCode);
-      document.cookie = `locale=${languageCode}; path=/`;
+    if (langFromURL && langFromURL !== currentLanguage) {
+      setCurrentLanguage(langFromURL);
+      localStorage.setItem('locale', langFromURL);
+    }
+  }, [pathname]);
+
+  const changeLanguage = (lang) => {
+    localStorage.setItem('locale', lang);
+    setCurrentLanguage(lang);
+
+    const segments = pathname.split('/');
+    if (segments.length >= 3) {
+      segments[1] = lang;
+      router.push(segments.join('/'));
+    } else {
+      router.push(`/${lang}/home-page`);
     }
   };
 
   const t = (key) => {
-    const keys = key.split('.');
-    let value = translations;
-    
-    for (const k of keys) {
-      if (value && typeof value === 'object') {
-        value = value[k];
-      } else {
-        return key;
-      }
-    }
-    
+    const value = getNestedValue(translations[currentLanguage], key);
     return value || key;
   };
 
   return (
-    <LanguageContext.Provider value={{ currentLanguage, changeLanguage, t }}>
+    <LanguageContext.Provider value={{ t, changeLanguage, currentLanguage }}>
       {children}
     </LanguageContext.Provider>
   );
-}; 
+}
+
+export const useLanguage = () => useContext(LanguageContext);

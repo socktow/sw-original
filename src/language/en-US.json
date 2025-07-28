@@ -1,4 +1,30 @@
 {
   "title": "Welcome",
-  "description": "This is the home page."
+  "description": "This is the home page.",
+  "signin": {
+    "title": "Sign In",
+    "description": "Please enter your email and password to log in.",
+    "email": "Email Address",
+    "password": "Password",
+    "button": "Sign In"
+  },
+  "download": {
+    "title": "Anime action RPG",
+    "subtitle": "with attractive characters and epic storylines",
+    "description": "Please check your PC specs and version of Direct X first for faster game play Client Download",
+    "button": "Client Download",
+    "specs": {
+      "title": "System Recommended Specifications",
+      "category": "Category",
+      "recommended": "Recommended"
+    },
+    "notice1": "You may not be able to play smoothly with lower than recommended specs.",
+    "notice2": "Please make sure you have more than 30GB of free space before the first Install.",
+    "notice3": "When using internal VGA, the game may not run properly, regardless of the test result.",
+    "drivers": {
+      "title": "Driver Downloads",
+      "notice1": "The latest version of DirectX and Visual ++ 2010 SP1 are required to run the client.",
+      "notice2": "Install the latest version of the graphics driver to enjoy the game in a better condition."
+    }
+  }
 }

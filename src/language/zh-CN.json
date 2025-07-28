@@ -1,4 +1,30 @@
 {
-  "title": "giao diện tiếng trung",
-  "description": "giao diện tiếng trung。"
+  "title": "欢迎",
+  "description": "这是主页。",
+  "signin": {
+    "title": "登录",
+    "description": "请输入您的邮箱和密码进行登录。",
+    "email": "邮箱地址",
+    "password": "密码",
+    "button": "登录"
+  },
+  "download": {
+    "title": "动漫动作角色扮演游戏",
+    "subtitle": "拥有吸引人的角色和史诗般的剧情",
+    "description": "请先检查您的电脑配置和Direct X版本，以获得更流畅的游戏体验。",
+    "button": "客户端下载",
+    "specs": {
+      "title": "推荐系统配置",
+      "category": "类别",
+      "recommended": "推荐配置"
+    },
+    "notice1": "如果配置低于推荐标准，可能无法顺畅运行游戏。",
+    "notice2": "首次安装前请确保有30GB以上的剩余空间。",
+    "notice3": "使用集成显卡时，即使测试结果正常，游戏也可能无法正常运行。",
+    "drivers": {
+      "title": "驱动下载",
+      "notice1": "运行客户端需要最新版的 DirectX 和 Visual C++ 2010 SP1。",
+      "notice2": "请安装最新版本的显卡驱动，以获得更好的游戏体验。"
+    }
+  }
 }

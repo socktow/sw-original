@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Lily",
+    "thumb": "/static/img/character/thumb_lily.png",
+    "image": "/static/img/character/lily.png"
+  },
+  {
+    "name": "Nabi",
+    "thumb": "/static/img/character/thumb_nabi.png",
+    "image": "/static/img/character/nabi.png"
+  },
+  {
+    "name": "Haru",
+    "thumb": "/static/img/character/thumb_haru.png",
+    "image": "/static/img/character/haru.png"
+  },
+  {
+    "name": "Erwin",
+    "thumb": "/static/img/character/thumb_erwin.png",
+    "image": "/static/img/character/erwin.png"
+  },
+  {
+    "name": "Dhana",
+    "thumb": "/static/img/character/thumb_dhana.png",
+    "image": "/static/img/character/dhana.png"
+  },
+  {
+    "name": "Jin",
+    "thumb": "/static/img/character/thumb_jin.png",
+    "image": "/static/img/character/jin.png"
+  },
+  {
+    "name": "Iris",
+    "thumb": "/static/img/character/thumb_iris.png",
+    "image": "/static/img/character/iris.png"
+  },
+  {
+    "name": "Ephnel",
+    "thumb": "/static/img/character/thumb_ephnel.png",
+    "image": "/static/img/character/ephnel.png"
+  },
+  {
+    "name": "Chii",
+    "thumb": "/static/img/character/thumb_chii.png",
+    "image": "/static/img/character/chii.png"
+  },
+  {
+    "name": "Stella",
+    "thumb": "/static/img/character/thumb_stella.png",
+    "image": "/static/img/character/stella.png"
+  }
+]
