@@ -113,9 +113,9 @@ const Navbar = () => {
         </div>
 
         {/* User section sát phải */}
-        <div className="ml-auto hidden md:block">
+        {/* <div className="ml-auto hidden md:block">
           <UserLoginSection user={user} />
-        </div>
+        </div> */}
 
         {/* Mobile hamburger (ẩn trên PC) */}
         <div className="md:hidden ml-auto flex items-center gap-3">

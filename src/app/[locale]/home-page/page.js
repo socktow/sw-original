@@ -1,5 +1,5 @@
 'use client';
-import { useLanguage } from '@/context/LanguageContext';
+import { useLanguage } from '@/app/hooks/useLanguage';
 
 export default function HomePage() {
   const { t, changeLanguage, currentLanguage } = useLanguage();
