@@ -26,5 +26,32 @@
       "notice1": "The latest version of DirectX and Visual ++ 2010 SP1 are required to run the client.",
       "notice2": "Install the latest version of the graphics driver to enjoy the game in a better condition."
     }
+  },
+  "navbar": {
+    "news": "News",
+    "news_latest": "Latest News",
+    "news_notice": "Notice",
+    "news_maintenance": "Maintenance",
+    "news_update": "Updates",
+    "news_shop": "Shop",
+    "news_event": "Event",
+    "news_gm_video": "GM Video",
+    "about": "About",
+    "about_game": "Game",
+    "about_guide": "Play Guide",
+    "about_character": "Character",
+    "forum": "Forum",
+    "forum_home": "Forum Home",
+    "forum_discussion": "General Discussion",
+    "forum_tips": "Game Tips",
+    "forum_qa": "Q & A",
+    "forum_art": "Art & Media",
+    "download": "Download",
+    "support": "Support",
+    "support_faq": "FAQ",
+    "support_qna": "1:1 Inquiry",
+    "login": "Login",
+    "signup": "Create Account",
+    "account": "Account"
   }
 }

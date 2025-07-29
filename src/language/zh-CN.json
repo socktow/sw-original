@@ -26,5 +26,37 @@
       "notice1": "运行客户端需要最新版的 DirectX 和 Visual C++ 2010 SP1。",
       "notice2": "请安装最新版本的显卡驱动，以获得更好的游戏体验。"
     }
+  },
+  "navbar": {
+    "news": "新闻",
+    "news_latest": "最新消息",
+    "news_notice": "公告",
+    "news_maintenance": "维护",
+    "news_update": "更新",
+    "news_shop": "商店",
+    "news_event": "活动",
+    "news_gm_video": "GM 视频",
+
+    "about": "关于",
+    "about_game": "游戏",
+    "about_guide": "游戏指南",
+    "about_character": "角色",
+
+    "forum": "论坛",
+    "forum_home": "论坛首页",
+    "forum_discussion": "讨论区",
+    "forum_tips": "游戏技巧",
+    "forum_qa": "问与答",
+    "forum_art": "美术 & 媒体",
+
+    "download": "下载",
+
+    "support": "支持",
+    "support_faq": "常见问题",
+    "support_qna": "1:1 咨询",
+
+    "login": "登录",
+    "signup": "创建账号",
+    "account": "账户"
   }
 }
