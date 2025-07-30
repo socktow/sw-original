@@ -1,6 +1,5 @@
 "use client";
-import React from "react";
-import { useLanguage } from "@/context/LanguageContext";
+import { useLanguage } from "@/app/hooks/useLanguage";
 
 const systemSpecs = [
   { category: "OS", value: "Windows 10 64bit" },

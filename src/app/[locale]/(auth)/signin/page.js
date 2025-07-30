@@ -2,8 +2,9 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "@/lib/auth/client/logevent";
-
+import { useLanguage } from "../../../hooks/useLanguage";
 export default function LoginPage() {
+  const { t } = useLanguage();
   const user = null;
   const router = useRouter();
 
@@ -11,18 +12,18 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
-  // ✅ Chờ user được xác định
   useEffect(() => {
-    if (user === undefined) return; // Đang loading
+    if (user === undefined) return;
     if (user) {
       router.replace("/dashboard/main");
     }
   }, [user, router]);
-
-  // ✅ Tránh render nháy nháy khi user chưa xác định
   if (user === undefined) {
-    return <div className="min-h-screen flex justify-center items-center text-xl">Loading...</div>;
+    return (
+      <div className="min-h-screen flex justify-center items-center text-xl">
+        Loading...
+      </div>
+    );
   }
 
   if (user) return null;
@@ -33,7 +34,7 @@ export default function LoginPage() {
     setError("");
 
     if (!email || !password) {
-      setError("Please fill in all fields");
+      setError(t('login.error_fill_fields') || 'Please fill in all fields');
       setLoading(false);
       return;
     }
@@ -55,7 +56,9 @@ export default function LoginPage() {
   return (
     <div className="min-h-[60vh] flex items-center justify-center bg-white">
       <div className="w-full max-w-md bg-white rounded-none shadow-none p-0 flex flex-col items-center">
-        <h1 className="text-3xl font-bold text-black text-center mt-12 mb-6">Login</h1>
+        <h1 className="text-3xl font-bold text-black text-center mt-12 mb-6">
+          {t("login.title")}
+        </h1>
         <div className="w-full border-t-2 border-black mb-10"></div>
 
         {error && (
@@ -64,15 +67,23 @@ export default function LoginPage() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full px-2 md:px-0 items-center">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-6 w-full px-2 md:px-0 items-center"
+        >
           {/* Email */}
           <div className="w-full max-w-lg">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1 ml-1">Email</label>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700 mb-1 ml-1"
+            >
+              {t("login.email")}
+            </label>
             <input
               id="email"
               type="email"
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-3 border border-gray-400 rounded-none text-black"
               autoComplete="username"
               disabled={loading}
@@ -81,12 +92,17 @@ export default function LoginPage() {
 
           {/* Password */}
           <div className="w-full max-w-lg">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1 ml-1">Password</label>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700 mb-1 ml-1"
+            >
+              {t("login.password")}
+            </label>
             <input
               id="password"
               type="password"
               value={password}
-              onChange={e => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-3 border border-gray-400 rounded-none text-black"
               autoComplete="current-password"
               disabled={loading}
@@ -99,14 +115,26 @@ export default function LoginPage() {
             disabled={loading}
             className="btn-corner w-full max-w-lg py-4 mt-2 mb-2 bg-black text-white font-bold text-xl disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading ? 'Logging in...' : t('login.button')}
           </button>
         </form>
 
         <ul className="flex justify-center gap-8 mt-8 mb-8 text-black text-base w-full">
-          <li><a href="#" className="hover:underline">Find Account</a></li>
-          <li><a href="#" className="hover:underline">Find Password</a></li>
-          <li><a href="/signup" className="hover:underline">Create Account</a></li>
+          <li>
+            <a href="#" className="hover:underline">
+              {t("login.find_account")}
+            </a>
+          </li>
+          <li>
+            <a href="#" className="hover:underline">
+              {t("login.find_password")}
+            </a>
+          </li>
+          <li>
+            <a href="/signup" className="hover:underline">
+              {t("login.create_account")}
+            </a>
+          </li>
         </ul>
       </div>
     </div>

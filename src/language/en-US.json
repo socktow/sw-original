@@ -53,5 +53,19 @@
     "login": "Login",
     "signup": "Create Account",
     "account": "Account"
+  },
+  "login": {
+    "title": "Sign In",
+    "description": "Please enter your email and password to log in.",
+    "email": "Email Address",
+    "password": "Password",
+    "button": "Login",
+    "find_account": "Find Account",
+    "find_password": "Find Password",
+    "create_account": "Create Account",
+    "error_fill": "Please fill in all fields",
+    "error_login_failed": "Login failed",
+    "error_try_again": "An error occurred. Please try again.",
+    "loading": "Logging in..."
   }
 }

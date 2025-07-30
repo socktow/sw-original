@@ -36,21 +36,6 @@ const UserLoginSection = ({ user }) => {
             />
             <span className="font-medium">Sign Up</span>
           </Link>
-          <a
-            href="#"
-            className="relative group border-2 border-yellow-300 rounded-xl overflow-hidden shadow-md hover:scale-105 transition-transform"
-            id="game_down_menu_left"
-          >
-            <div className="relative h-10 w-[100px]">
-              <Image
-                src="/static/img/main_game_txt.png"
-                alt="Start Game"
-                fill
-                className="object-contain bg-black px-4 py-1"
-              />
-            </div>
-            <div className="absolute inset-0 bg-yellow-300 opacity-10 group-hover:opacity-30 transition-opacity rounded-xl" />
-          </a>
         </div>
       ) : (
         <div className="flex items-center border border-yellow-300 rounded-xl px-3 py-2 bg-black text-white shadow-lg min-w-[260px] h-[56px]">

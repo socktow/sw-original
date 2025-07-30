@@ -58,5 +58,19 @@
     "login": "登录",
     "signup": "创建账号",
     "account": "账户"
+  },
+  "login": {
+    "title": "登录",
+    "description": "请输入您的邮箱和密码进行登录。",
+    "email": "邮箱地址",
+    "password": "密码",
+    "button": "登录",
+    "find_account": "找回账号",
+    "find_password": "找回密码",
+    "create_account": "创建账号",
+    "error_fill": "请填写所有字段。",
+    "error_login_failed": "登录失败。",
+    "error_try_again": "发生错误，请重试。",
+    "loading": "正在登录..."
   }
 }

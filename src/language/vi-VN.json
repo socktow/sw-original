@@ -1,0 +1,71 @@
+{
+  "title": "Chào mừng",
+  "description": "Đây là trang chủ.",
+  "signin": {
+    "title": "Đăng nhập",
+    "description": "Vui lòng nhập email và mật khẩu để đăng nhập.",
+    "email": "Địa chỉ Email",
+    "password": "Mật khẩu",
+    "button": "Đăng nhập"
+  },
+  "download": {
+    "title": "Game hành động Anime",
+    "subtitle": "với nhân vật hấp dẫn và cốt truyện hoành tráng",
+    "description": "Vui lòng kiểm tra cấu hình máy tính và phiên bản Direct X trước khi tải để chơi game mượt hơn",
+    "button": "Tải Client",
+    "specs": {
+      "title": "Cấu hình khuyến nghị",
+      "category": "Danh mục",
+      "recommended": "Khuyến nghị"
+    },
+    "notice1": "Bạn có thể không chơi mượt nếu cấu hình thấp hơn mức khuyến nghị.",
+    "notice2": "Hãy đảm bảo máy bạn có ít nhất 30GB dung lượng trống trước khi cài đặt lần đầu.",
+    "notice3": "Khi sử dụng VGA onboard, game có thể không chạy đúng, dù kết quả kiểm tra đạt.",
+    "drivers": {
+      "title": "Tải Driver",
+      "notice1": "Phiên bản DirectX và Visual ++ 2010 SP1 mới nhất là bắt buộc để chạy client.",
+      "notice2": "Hãy cài đặt driver card đồ họa mới nhất để trải nghiệm game tốt hơn."
+    }
+  },
+  "navbar": {
+    "news": "Tin tức",
+    "news_latest": "Tin mới nhất",
+    "news_notice": "Thông báo",
+    "news_maintenance": "Bảo trì",
+    "news_update": "Cập nhật",
+    "news_shop": "Cửa hàng",
+    "news_event": "Sự kiện",
+    "news_gm_video": "Video GM",
+    "about": "Giới thiệu",
+    "about_game": "Trò chơi",
+    "about_guide": "Hướng dẫn chơi",
+    "about_character": "Nhân vật",
+    "forum": "Diễn đàn",
+    "forum_home": "Trang diễn đàn",
+    "forum_discussion": "Thảo luận chung",
+    "forum_tips": "Mẹo chơi",
+    "forum_qa": "Hỏi & Đáp",
+    "forum_art": "Nghệ thuật & Phương tiện",
+    "download": "Tải game",
+    "support": "Hỗ trợ",
+    "support_faq": "Câu hỏi thường gặp",
+    "support_qna": "Hỏi đáp 1:1",
+    "login": "Đăng nhập",
+    "signup": "Tạo tài khoản",
+    "account": "Tài khoản"
+  },
+  "login": {
+    "title": "Đăng nhập",
+    "description": "Vui lòng nhập email và mật khẩu để đăng nhập.",
+    "email": "Địa chỉ Email",
+    "password": "Mật khẩu",
+    "button": "Đăng nhập",
+    "find_account": "Tìm tài khoản",
+    "find_password": "Tìm mật khẩu",
+    "create_account": "Tạo tài khoản",
+    "error_fill": "Vui lòng điền đầy đủ các trường.",
+    "error_login_failed": "Đăng nhập thất bại.",
+    "error_try_again": "Đã xảy ra lỗi. Vui lòng thử lại.",
+    "loading": "Đang đăng nhập..."
+  }
+}
