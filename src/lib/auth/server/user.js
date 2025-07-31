@@ -1,6 +1,6 @@
 export const getUser = async () => {
   try {
-    const res = await fetch('/api/auth/me', {
+    const res = await fetch('/api/user/auth/me', {
       credentials: 'include',
       cache: 'no-store',
     });

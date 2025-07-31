@@ -8,11 +8,11 @@ import MobileMenu from "./mobilemenu";
 import UserLoginSection from "./UserLoginSection";
 import { useLanguage } from "@/app/hooks/useLanguage";
 import Image from "next/image";
-
+import { useSelector } from "react-redux";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t, currentLanguage: locale } = useLanguage();
-  const user = null;
+  const user = useSelector((state) => state.user.user);
 
   const navLinks = [
     {

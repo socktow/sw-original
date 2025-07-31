@@ -10,12 +10,14 @@ import en from "@/language/en-US.json";
 import ko from "@/language/ko-KR.json";
 import zh from "@/language/zh-CN.json";
 import vi from "@/language/vi-VN.json";
+import jp from "@/language/ja-JP.json";
 
 const translations = {
   "en-US": en,
   "ko-KR": ko,
   "zh-CN": zh,
   "vi-VN": vi,
+  "ja-JP": jp,
 };
 
 const getNestedValue = (obj, key) =>

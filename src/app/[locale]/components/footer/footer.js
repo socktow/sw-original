@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useLanguage } from '@/app/hooks/useLanguage';
-import { FaGlobeAsia } from 'react-icons/fa';
+import { useLanguage } from "@/app/hooks/useLanguage";
+import { FaGlobeAsia } from "react-icons/fa";
 
 export default function Footer() {
   const { changeLanguage, currentLanguage } = useLanguage();
@@ -22,6 +22,7 @@ export default function Footer() {
             className="border border-gray-300 px-2 py-1 rounded focus:outline-none focus:ring"
           >
             <option value="en-US">English</option>
+            <option value="ja-JP">日本語 </option>
             <option value="vi-VN">Tiếng Việt</option>
             <option value="ko-KR">한국어</option>
             <option value="zh-CN">中文</option>

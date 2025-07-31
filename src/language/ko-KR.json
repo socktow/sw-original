@@ -72,5 +72,38 @@
     "error_login_failed": "로그인에 실패했습니다.",
     "error_try_again": "오류가 발생했습니다. 다시 시도해주세요.",
     "loading": "로그인 중..."
+  },
+
+  "dashboard": {
+    "basic_info": "기본 정보",
+    "username": "SW 이름",
+    "last_logout": "마지막 로그아웃",
+    "swcoin_balance": "S-코인 잔액",
+    "game_id_active": "게임 ID 활성화됨",
+    "game_id_inactive": "게임 ID 비활성화됨",
+    "account_info": "계정 정보",
+    "email": "이메일",
+    "password": "비밀번호",
+    "change_password": "변경",
+    "security_qa": "보안 질문 및 답변",
+    "edit": "수정",
+    "promo_email_agree": "프로모션 이메일 수신에 동의합니다!",
+    "scoin": "S-코인",
+    "total": "총액",
+    "history": "S-코인 내역",
+    "charge": "충전",
+    "inquiry": "내 문의사항",
+    "total_inquiry": "전체 문의",
+    "answered": "답변 완료",
+    "not_answered": "미답변",
+    "inquiry_history": "문의 내역",
+    "send_inquiry": "문의하기",
+    "forum_activities": "포럼 활동",
+    "forum_sanction": "포럼 제재",
+    "none": "없음",
+    "created_topics": "작성한\n주제",
+    "left_comments": "남긴\n댓글",
+    "received_likes": "받은\n좋아요",
+    "bookmarked_topics": "북마크한\n주제"
   }
 }
