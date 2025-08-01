@@ -9,6 +9,7 @@ import {
 import { BsCoin } from "react-icons/bs";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
+import Image from "next/image";
 
 export default function DashboardMainPage() {
   const router = useRouter();
@@ -76,7 +77,7 @@ export default function DashboardMainPage() {
         <div className="flex justify-between items-center">
           <span>Password</span>
           <button
-            onClick={() => router.push("/dashboard/change-password")}
+            onClick={() => router.push(`/dashboard/change-password`)}
             className="bg-red-400 hover:bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-md transition"
           >
             <FaLock /> CHANGE
@@ -109,13 +110,13 @@ export default function DashboardMainPage() {
         </div>
         <div className="flex gap-3 mt-4">
           <button
-            onClick={() => router.push("/dashboard/coin-purchase")}
+            onClick={() => router.push(`/dashboard/coin-purchase`)}
             className="flex-1 bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 rounded-full shadow-md text-sm"
           >
             S-COIN HISTORY
           </button>
           <button
-            onClick={() => router.push("/dashboard/coin-charge")}
+            onClick={() => router.push(`/dashboard/coin-charge`)}
             className="flex-1 bg-red-400 hover:bg-red-500 text-white font-bold py-2 rounded-full shadow-md text-sm"
           >
             CHARGE
@@ -133,7 +134,7 @@ export default function DashboardMainPage() {
         />
         <div className="flex gap-3 mt-4">
           <button
-            onClick={() => router.push("/dashboard/inquiry")}
+            onClick={() => router.push(`/dashboard/inquiry`)}
             className="flex-1 bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 rounded-full shadow-md text-sm"
           >
             INQUIRY HISTORY
@@ -147,16 +148,22 @@ export default function DashboardMainPage() {
       {/* FORUM ACTIVITIES */}
       <div className="col-span-1 lg:col-span-2 flex flex-col bg-white rounded-2xl border border-yellow-300 shadow-md hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 overflow-hidden">
         <div className="flex items-center gap-3 bg-yellow-400 px-6 py-4">
-          <span className="font-bold text-lg text-gray-900">FORUM ACTIVITIES</span>
+          <span className="font-bold text-lg text-gray-900">
+            FORUM ACTIVITIES
+          </span>
         </div>
         <div className="flex flex-col md:flex-row gap-6 p-6">
           <div className="flex flex-col items-center w-full md:w-1/4">
-            <img
+            <Image
               src="/static/img/forum/avatar-sample.png"
               alt="avatar"
-              className="w-24 h-24 rounded-full border-4 border-yellow-300 object-cover shadow-md hover:shadow-yellow-500 transition"
+              width={96}
+              height={96}
+              className="rounded-full border-4 border-yellow-300 object-cover shadow-md hover:shadow-yellow-500 transition"
             />
-            <span className="font-bold mt-2">{user.username || "Anonymous"}</span>
+            <span className="font-bold mt-2">
+              {user.username || "Anonymous"}
+            </span>
             <span className="text-xs text-gray-500">
               Forum Sanction: <span className="text-blue-600">None</span>
             </span>
@@ -173,7 +180,9 @@ export default function DashboardMainPage() {
                 className="bg-gray-100 rounded-xl flex flex-col items-center justify-center gap-2 p-4 text-center text-sm font-semibold"
               >
                 <span className="text-xl text-gray-900">{count}</span>
-                <span className="whitespace-pre-line text-gray-700">{label}</span>
+                <span className="whitespace-pre-line text-gray-700">
+                  {label}
+                </span>
               </div>
             ))}
           </div>

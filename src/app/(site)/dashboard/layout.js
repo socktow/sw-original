@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import DashboardTabs from "@/app/[locale]/components/dashboard/DashboardTabs";
+import DashboardTabs from "../components/dashboard/DashboardTabs";
 
 export default function DashboardLayout({ children }) {
   return (

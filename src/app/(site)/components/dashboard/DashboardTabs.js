@@ -1,7 +1,6 @@
 "use client";
 import { usePathname, useRouter } from 'next/navigation';
 import { motion } from "framer-motion";
-import { useLanguage } from "@/app/hooks/useLanguage";
 
 const tabs = [
   { labelKey: 'Overview', path: '/dashboard/main' },
@@ -13,10 +12,9 @@ const tabs = [
 export default function DashboardTabs() {
   const pathname = usePathname();
   const router = useRouter();
-  const { t, currentLanguage: locale } = useLanguage();
 
   const isActiveTab = (path) =>
-    pathname === `/${locale}${path}` || (path === '/dashboard/main' && pathname === `/${locale}/dashboard`);
+    pathname === path || (path === '/dashboard/main' && pathname === '/dashboard');
 
   return (
     <div className="w-full max-w-full mx-auto flex justify-center mt-4 mb-10">
@@ -27,13 +25,11 @@ export default function DashboardTabs() {
           return (
             <button
               key={tab.path}
-              onClick={() => router.push(`/${locale}${tab.path}`)}
+              onClick={() => router.push(tab.path)}
               className={`relative px-5 py-3 mx-1 font-semibold text-sm md:text-base whitespace-nowrap transition-all duration-300 ease-in-out
                 ${isActive ? 'text-black font-bold' : 'text-gray-500 hover:text-yellow-500'}
               `}
-              style={{
-                minWidth: 120,
-              }}
+              style={{ minWidth: 120 }}
             >
               {tab.labelKey}
               {isActive && (

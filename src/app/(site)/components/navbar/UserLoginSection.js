@@ -1,19 +1,15 @@
 "use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { signOut } from "@/lib/auth/client/logevent";
-import { useParams } from "next/navigation";
 
 const UserLoginSection = ({ user }) => {
-  const { locale } = useParams();
-
   return (
     <div className="hidden md:flex items-center ml-auto">
       {!user ? (
         <div className="flex items-center gap-4">
           <Link
-            href={`/${locale}/signin`}
+            href="/signin"
             className="flex items-center gap-2 px-4 py-2 border border-yellow-300 rounded-full text-black hover:text-yellow-300 hover:border-yellow-400 transition-all duration-150 shadow-sm bg-white"
           >
             <Image
@@ -25,7 +21,7 @@ const UserLoginSection = ({ user }) => {
             <span className="font-medium">Login</span>
           </Link>
           <Link
-            href={`/${locale}/signup`}
+            href="/signup"
             className="flex items-center gap-2 px-4 py-2 border border-yellow-300 rounded-full text-black hover:text-yellow-300 hover:border-yellow-400 transition-all duration-150 shadow-sm bg-white"
           >
             <Image
@@ -52,11 +48,11 @@ const UserLoginSection = ({ user }) => {
               {user.username}
             </p>
             <div className="flex items-center gap-2 text-xs mt-0.5">
-              <Link href={`/${locale}/dashboard/main`} className="hover:underline">
+              <Link href="/dashboard/main" className="hover:underline">
                 MY PAGE
               </Link>
               <span className="text-gray-500">|</span>
-              <Link href={`/${locale}/dashboard/coin-charge`} className="hover:underline">
+              <Link href="/dashboard/coin-charge" className="hover:underline">
                 CHARGE
               </Link>
               <span className="text-gray-500">|</span>

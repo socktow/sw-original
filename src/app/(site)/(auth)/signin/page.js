@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "@/lib/auth/client/logevent";
 import { useLanguage } from "../../../hooks/useLanguage";
+import { useSelector } from "react-redux";
+import Link from "next/link";
 export default function LoginPage() {
   const { t } = useLanguage();
-  const user = null;
+  const user = useSelector((state) => state.user.user);
   const router = useRouter();
 
   const [email, setEmail] = useState("");
@@ -34,7 +36,7 @@ export default function LoginPage() {
     setError("");
 
     if (!email || !password) {
-      setError(t('login.error_fill_fields') || 'Please fill in all fields');
+      setError(t("login.error_fill_fields") || "Please fill in all fields");
       setLoading(false);
       return;
     }
@@ -115,25 +117,25 @@ export default function LoginPage() {
             disabled={loading}
             className="btn-corner w-full max-w-lg py-4 mt-2 mb-2 bg-black text-white font-bold text-xl disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {loading ? 'Logging in...' : t('login.button')}
+            {loading ? "Logging in..." : t("login.button")}
           </button>
         </form>
 
         <ul className="flex justify-center gap-8 mt-8 mb-8 text-black text-base w-full">
           <li>
-            <a href="#" className="hover:underline">
+            <Link href="/find-account" className="hover:underline">
               {t("login.find_account")}
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="hover:underline">
+            <Link href="/find-password" className="hover:underline">
               {t("login.find_password")}
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/signup" className="hover:underline">
+            <Link href="/signup" className="hover:underline">
               {t("login.create_account")}
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

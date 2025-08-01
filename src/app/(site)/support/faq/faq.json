@@ -1,0 +1,42 @@
+{
+  "Technical": [
+    {
+      "question": "Steam Sign-in or Sign-up",
+      "answer": "For any issues regarding the Closers Sign-in or Sign-up, please contact "
+    },
+    {
+      "question": "Trò chơi bị crash khi khởi động?",
+      "answer": "Vui lòng kiểm tra lại driver card đồ họa hoặc chạy game dưới quyền Administrator."
+    }
+  ],
+  "Account/Purchase": [
+    {
+      "question": "Tôi quên mật khẩu tài khoản thì phải làm sao?",
+      "answer": "Bạn có thể dùng chức năng quên mật khẩu tại trang đăng nhập để đặt lại."
+    },
+    {
+      "question": "Tôi đã nạp tiền nhưng không nhận được vật phẩm?",
+      "answer": "Vui lòng chờ tối đa 10 phút. Nếu vẫn chưa nhận được, hãy liên hệ bộ phận hỗ trợ với mã giao dịch."
+    }
+  ],
+  "Game Play": [
+    {
+      "question": "Làm thế nào để nâng cấp trang bị?",
+      "answer": "Bạn có thể nâng cấp trang bị tại NPC thợ rèn trong thành phố chính bằng nguyên liệu phù hợp."
+    },
+    {
+      "question": "Có thể chơi cùng bạn bè không?",
+      "answer": "Có, bạn có thể tổ đội với bạn bè bằng cách thêm họ vào danh sách bạn bè và mời vào nhóm."
+    }
+  ],
+  "Other": [
+    {
+      "question": "Trò chơi có hỗ trợ ngôn ngữ tiếng Việt không?",
+      "answer": "Hiện tại trò chơi chỉ hỗ trợ tiếng Anh, nhưng chúng tôi đang cân nhắc thêm nhiều ngôn ngữ hơn trong tương lai."
+    },
+    {
+      "question": "Làm sao để báo cáo lỗi?",
+      "answer": "Bạn có thể gửi báo cáo lỗi qua mục 'Support' trên website chính thức."
+    }
+  ]
+}

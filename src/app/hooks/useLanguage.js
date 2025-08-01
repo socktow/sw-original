@@ -1,7 +1,6 @@
 "use client";
 
 import { useSelector, useDispatch } from "react-redux";
-import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { setLanguage } from "@/redux/slices/languageSlice";
 import { getCookie, setCookie } from "@/lib/cookies";
@@ -25,46 +24,28 @@ const getNestedValue = (obj, key) =>
 
 export const useLanguage = () => {
   const dispatch = useDispatch();
-  const pathname = usePathname();
-  const router = useRouter();
   const currentLanguage = useSelector(
     (state) => state.language.currentLanguage
   );
 
   useEffect(() => {
-    const segments = pathname.split("/");
-    const langFromURL = segments[1];
-    const isValidLang = Object.keys(translations).includes(langFromURL);
-    const stored = getCookie("mi18nLang");
+    const storedLang = getCookie("mi18nLang");
+    const isValidLang = Object.keys(translations).includes(storedLang);
 
-    // 🔁 Nếu ngôn ngữ trong URL không hợp lệ → redirect về /en-US/home-page
-    if (!isValidLang) {
-      router.replace(`/en-US/home-page`);
-      dispatch(setLanguage("en-US"));
+    if (isValidLang && storedLang !== currentLanguage) {
+      dispatch(setLanguage(storedLang));
+    } else if (!storedLang) {
+      // Không có cookie -> set default
       setCookie("mi18nLang", "en-US");
-      return;
+      dispatch(setLanguage("en-US"));
     }
-
-    // ✅ Nếu langFromURL hợp lệ → sync redux + cookie nếu cần
-    if (langFromURL !== currentLanguage) {
-      dispatch(setLanguage(langFromURL));
-      setCookie("mi18nLang", langFromURL);
-    } else if (stored && stored !== currentLanguage) {
-      dispatch(setLanguage(stored));
-    }
-  }, [pathname]);
+  }, []);
 
   const changeLanguage = (lang) => {
-    dispatch(setLanguage(lang));
-    setCookie("mi18nLang", lang);
+    if (!translations[lang]) return;
 
-    const segments = pathname.split("/");
-    if (segments.length >= 3) {
-      segments[1] = lang;
-      router.push(segments.join("/"));
-    } else {
-      router.push(`/${lang}/home-page`);
-    }
+    setCookie("mi18nLang", lang);
+    dispatch(setLanguage(lang));
   };
 
   const t = (key) => {

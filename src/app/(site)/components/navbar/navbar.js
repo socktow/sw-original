@@ -9,56 +9,57 @@ import UserLoginSection from "./UserLoginSection";
 import { useLanguage } from "@/app/hooks/useLanguage";
 import Image from "next/image";
 import { useSelector } from "react-redux";
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { t, currentLanguage: locale } = useLanguage();
+  const { t } = useLanguage();
   const user = useSelector((state) => state.user.user);
 
   const navLinks = [
     {
       name: t("navbar.news"),
-      href: `/${locale}/news`,
+      href: `/news`,
       subLinks: [
-        { name: t("navbar.news_latest"), href: `/${locale}/news?type=0` },
-        { name: t("navbar.news_notice"), href: `/${locale}/news?type=1` },
-        { name: t("navbar.news_maintenance"), href: `/${locale}/news?type=2` },
-        { name: t("navbar.news_update"), href: `/${locale}/news?type=3` },
-        { name: t("navbar.news_shop"), href: `/${locale}/news?type=4` },
-        { name: t("navbar.news_event"), href: `/${locale}/news?type=5` },
-        { name: t("navbar.news_gm_video"), href: `/${locale}/news?type=6` },
+        { name: t("navbar.news_latest"), href: `/news?type=0` },
+        { name: t("navbar.news_notice"), href: `/news?type=1` },
+        { name: t("navbar.news_maintenance"), href: `/news?type=2` },
+        { name: t("navbar.news_update"), href: `/news?type=3` },
+        { name: t("navbar.news_shop"), href: `/news?type=4` },
+        { name: t("navbar.news_event"), href: `/news?type=5` },
+        { name: t("navbar.news_gm_video"), href: `/news?type=6` },
       ],
     },
     {
       name: t("navbar.about"),
-      href: `/${locale}/game-introduction`,
+      href: `/game-introduction`,
       subLinks: [
-        { name: t("navbar.about_game"), href: `/${locale}/game-introduction` },
-        { name: t("navbar.about_guide"), href: `/${locale}/game-guide` },
-        { name: t("navbar.about_character"), href: `/${locale}/character` },
+        { name: t("navbar.about_game"), href: `/game-introduction` },
+        { name: t("navbar.about_guide"), href: `/game-guide` },
+        { name: t("navbar.about_character"), href: `/character` },
       ],
     },
     {
       name: t("navbar.forum"),
-      href: `/${locale}/forum/home`,
+      href: `/forum/home`,
       subLinks: [
-        { name: t("navbar.forum_home"), href: `/${locale}/forum/home` },
-        { name: t("navbar.forum_discussion"), href: `/${locale}/forum/discussion` },
-        { name: t("navbar.forum_tips"), href: `/${locale}/forum/game-tips` },
-        { name: t("navbar.forum_qa"), href: `/${locale}/forum/qa` },
-        { name: t("navbar.forum_art"), href: `/${locale}/forum/art-media` },
+        { name: t("navbar.forum_home"), href: `/forum/home` },
+        { name: t("navbar.forum_discussion"), href: `/forum/discussion` },
+        { name: t("navbar.forum_tips"), href: `/forum/game-tips` },
+        { name: t("navbar.forum_qa"), href: `/forum/qa` },
+        { name: t("navbar.forum_art"), href: `/forum/art-media` },
       ],
     },
     {
       name: t("navbar.download"),
-      href: `/${locale}/game-download`,
+      href: `/game-download`,
       subLinks: [],
     },
     {
       name: t("navbar.support"),
-      href: `/${locale}/support/faq`,
+      href: `/support/faq`,
       subLinks: [
-        { name: t("navbar.support_faq"), href: `/${locale}/support/faq` },
-        { name: t("navbar.support_qna"), href: `/${locale}/support/qna` },
+        { name: t("navbar.support_faq"), href: `/support/faq` },
+        { name: t("navbar.support_qna"), href: `/support/qna` },
       ],
     },
   ];
@@ -68,7 +69,7 @@ const Navbar = () => {
       {user ? (
         <Link
           onClick={() => setIsMenuOpen(false)}
-          href={`/${locale}/account`}
+          href={`/account`}
           className="block px-4 py-2 font-bold bg-yellow-300 text-center rounded-xl hover:bg-yellow-400 transition"
         >
           {t("navbar.account")}
@@ -77,14 +78,14 @@ const Navbar = () => {
         <div className="flex flex-col gap-2">
           <Link
             onClick={() => setIsMenuOpen(false)}
-            href={`/${locale}/signin`}
+            href={`/signin`}
             className="block px-4 py-2 font-bold text-center rounded-xl bg-gray-100 hover:bg-yellow-100"
           >
             {t("navbar.login")}
           </Link>
           <Link
             onClick={() => setIsMenuOpen(false)}
-            href={`/${locale}/signup`}
+            href={`/signup`}
             className="block px-4 py-2 font-bold text-center rounded-xl bg-yellow-300 hover:bg-yellow-400"
           >
             {t("navbar.signup")}
@@ -99,7 +100,7 @@ const Navbar = () => {
       <div className="w-full py-4 px-4 flex items-center">
         {/* Logo + Menu */}
         <div className="flex items-center">
-          <Link href={`/${locale}/home-page`} className="flex-shrink-0">
+          <Link href={`/home-page`} className="flex-shrink-0">
             <Image
               src="/static/img/main_logo.png"
               alt="logo"
@@ -115,13 +116,13 @@ const Navbar = () => {
         </div>
 
         <div className="ml-auto hidden md:block">
-          <UserLoginSection user={user} locale={locale} />
+          <UserLoginSection user={user} />
         </div>
 
         {/* Mobile hamburger */}
         <div className="md:hidden ml-auto flex items-center gap-3">
           {!user && (
-            <Link href={`/${locale}/signin`} aria-label="Login">
+            <Link href={`/signin`} aria-label="Login">
               <Image
                 src="/static/img/icon-register.png"
                 alt="login"
