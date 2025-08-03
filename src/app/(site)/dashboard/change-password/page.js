@@ -1,27 +1,67 @@
 "use client";
 import { useState } from "react";
 import { FaLock } from "react-icons/fa";
+import { changePassword } from "@/lib/auth/client/client";
 
 export default function ChangePasswordPage() {
   const [oldPass, setOldPass] = useState("");
   const [newPass, setNewPass] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
   const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState(""); // "success" or "error"
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Reset message
+    setMessage("");
+    setMessageType("");
+
+    // Validation
     if (!oldPass || !newPass || !confirmPass) {
       setMessage("Vui lòng điền đầy đủ thông tin.");
+      setMessageType("error");
       return;
     }
+
+    if (newPass.length < 6) {
+      setMessage("Mật khẩu mới phải có ít nhất 6 ký tự.");
+      setMessageType("error");
+      return;
+    }
+
     if (newPass !== confirmPass) {
       setMessage("Mật khẩu mới không khớp.");
+      setMessageType("error");
       return;
     }
-    setMessage("Đổi mật khẩu thành công!");
-    setOldPass("");
-    setNewPass("");
-    setConfirmPass("");
+
+    if (oldPass === newPass) {
+      setMessage("Mật khẩu mới không được trùng với mật khẩu cũ.");
+      setMessageType("error");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      await changePassword({
+        oldPassword: oldPass,
+        newPassword: newPass,
+      });
+
+      setMessage("Đổi mật khẩu thành công!");
+      setMessageType("success");
+      setOldPass("");
+      setNewPass("");
+      setConfirmPass("");
+    } catch (error) {
+      setMessage(error.message || "Có lỗi xảy ra khi đổi mật khẩu.");
+      setMessageType("error");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -37,6 +77,7 @@ export default function ChangePasswordPage() {
             className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
             value={oldPass}
             onChange={e => setOldPass(e.target.value)}
+            disabled={loading}
             required
           />
         </div>
@@ -47,6 +88,7 @@ export default function ChangePasswordPage() {
             className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
             value={newPass}
             onChange={e => setNewPass(e.target.value)}
+            disabled={loading}
             required
           />
         </div>
@@ -57,17 +99,27 @@ export default function ChangePasswordPage() {
             className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
             value={confirmPass}
             onChange={e => setConfirmPass(e.target.value)}
+            disabled={loading}
             required
           />
         </div>
         <button
           type="submit"
-          className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 rounded-lg text-lg transition"
+          disabled={loading}
+          className={`w-full font-bold py-3 rounded-lg text-lg transition ${
+            loading
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-yellow-400 hover:bg-yellow-500 text-black"
+          }`}
         >
-          Xác nhận đổi mật khẩu
+          {loading ? "Đang xử lý..." : "Xác nhận đổi mật khẩu"}
         </button>
         {message && (
-          <div className="mt-2 text-center font-semibold text-green-600">{message}</div>
+          <div className={`mt-2 text-center font-semibold ${
+            messageType === "success" ? "text-green-600" : "text-red-600"
+          }`}>
+            {message}
+          </div>
         )}
       </form>
     </div>

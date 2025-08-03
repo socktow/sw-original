@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setUser, clearUser } from "@/redux/slices/userSlice";
+import { setUser, clearUser, updateUser } from "@/redux/slices/userSlice";
 
 export default function InitialUserLoader({ user }) {
   const dispatch = useDispatch();
@@ -19,9 +19,11 @@ export default function InitialUserLoader({ user }) {
     window.addEventListener("auth:logout", onLogout);
 
     const bc = new BroadcastChannel("user-updates");
+
     bc.onmessage = (event) => {
-      if (event.data?.type === "update-user" && event.data?.user) {
-        dispatch(setUser(event.data.user));
+      const { type, user: updatedUser } = event.data || {};
+      if (type === "update-user" && updatedUser) {
+        dispatch(updateUser(updatedUser));
       }
     };
 

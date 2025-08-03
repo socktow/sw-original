@@ -2,15 +2,14 @@
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image";
 
 const TABS = [
   { type: "0", label: "Latest News" },
-  { type: "1", label: "Notice" },
+  { type: "1", label: "Announcement" },
   { type: "2", label: "Maintenance" },
   { type: "3", label: "Updates" },
-  { type: "4", label: "Shop" },
-  { type: "5", label: "Event" },
-  { type: "6", label: "GM Video" },
+  { type: "4", label: "Event" },
 ];
 
 const POSTS = [
@@ -80,10 +79,12 @@ export default function NewsList() {
     <div className="max-w-7xl mx-auto px-4 py-8">
       {/* Banner */}
       <div className="relative w-full h-32 md:h-40 flex items-center justify-center mb-8 rounded-lg overflow-hidden shadow">
-        <img
+        <Image
           src="/static/img/News-10e7e.jpg"
           alt="News Banner"
-          className="object-cover w-full h-full"
+          fill
+          className="object-cover"
+          priority
         />
         <div className="absolute inset-0 flex items-center justify-center bg-black/30">
           <h1 className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg">

@@ -21,12 +21,10 @@ const Navbar = () => {
       href: `/news`,
       subLinks: [
         { name: t("navbar.news_latest"), href: `/news?type=0` },
-        { name: t("navbar.news_notice"), href: `/news?type=1` },
+        { name: t("navbar.news_announcement"), href: `/news?type=1` },
         { name: t("navbar.news_maintenance"), href: `/news?type=2` },
         { name: t("navbar.news_update"), href: `/news?type=3` },
-        { name: t("navbar.news_shop"), href: `/news?type=4` },
-        { name: t("navbar.news_event"), href: `/news?type=5` },
-        { name: t("navbar.news_gm_video"), href: `/news?type=6` },
+        { name: t("navbar.news_event"), href: `/news?type=4` },
       ],
     },
     {

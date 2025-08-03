@@ -21,3 +21,5 @@ async function apiPost(url, data) {
   export const verifyOtp = (email, otp) => apiPost("/api/public/auth/signup/verify", { email, otp });
   export const register = ({ username, email, password }) =>
     apiPost("/api/public/auth/signup/register", { username, email, password });
+  export const changePassword = ({ oldPassword, newPassword }) =>
+    apiPost("/api/user/change-password", { oldPassword, newPassword });

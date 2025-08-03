@@ -4,7 +4,8 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { QRPaymentPending } from "./QRPaymentPending";
 import { PaymentResult } from "./PaymentResult";
-import { handleZaloQuery } from '@/lib/payment/zalopay';
+import { handleZaloQuery } from "@/lib/payment/zalopay";
+import { getUser } from "@/lib/auth/server/user";
 
 export default function ZaloPayResult() {
   const { ordernumberstr } = useParams();
@@ -41,6 +42,23 @@ export default function ZaloPayResult() {
 
     if (data?.status && data.status !== "pending") {
       clearInterval(interval);
+
+      if (data.status === "success") {
+        getUser()
+          .then((user) => {
+            if (user) {
+              const channel = new BroadcastChannel("user-updates");
+              channel.postMessage({
+                type: "update-user",
+                user: user,
+              });
+              channel.close();
+            }
+          })
+          .catch((err) => {
+            console.error("Không lấy được user mới:", err);
+          });
+      }
     }
 
     return () => clearInterval(interval);
