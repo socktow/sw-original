@@ -28,7 +28,7 @@ export async function getUserFromToken() {
       swcoin: dbUser.swcoin,
       gameAccount: dbUser.gameAccount,
       lastLogin: dbUser.lastLogin,
-      role: dbUser.role,
+      avatar: dbUser.avatar.url,
     };
   } catch (err) {
     console.error("Invalid token:", err);

@@ -2,6 +2,12 @@ import mongoose from 'mongoose';
 
 const UserSchema = new mongoose.Schema(
   {
+    customId: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+
     // Tài khoản cơ bản
     username: {
       type: String,
@@ -64,7 +70,7 @@ const UserSchema = new mongoose.Schema(
 
     // Avatar
     avatar: {
-      url: { type: String, default: null },
+      url: { type: String, default: "/static/img/test/avatar.gif" },
       frame: { type: String, default: null },
     },
 

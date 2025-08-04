@@ -155,7 +155,7 @@ export default function DashboardMainPage() {
         <div className="flex flex-col md:flex-row gap-6 p-6">
           <div className="flex flex-col items-center w-full md:w-1/4">
             <Image
-              src="/static/img/test/avatar.gif"
+              src={user?.avatar}
               alt="avatar"
               width={96}
               height={96}

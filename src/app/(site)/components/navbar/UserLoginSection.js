@@ -37,7 +37,7 @@ const UserLoginSection = ({ user }) => {
         <div className="flex items-center border border-yellow-300 rounded-xl px-3 py-2 bg-black text-white shadow-lg min-w-[260px] h-[56px]">
           <div className="w-10 h-10 rounded-full overflow-hidden mr-3 border-2 border-yellow-300 relative">
             <Image
-              src="/static/img/test/avatar.gif"
+              src={user?.avatar}
               alt="avatar"
               fill
               className="object-cover"
