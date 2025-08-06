@@ -19,6 +19,13 @@ const translations = {
   "ja-JP": jp,
 };
 
+const countryToLang = {
+  VN: "vi-VN",
+  KR: "ko-KR",
+  CN: "zh-CN",
+  JP: "ja-JP",
+};
+
 const getNestedValue = (obj, key) =>
   key.split(".").reduce((acc, part) => acc?.[part], obj);
 
@@ -30,14 +37,26 @@ export const useLanguage = () => {
 
   useEffect(() => {
     const storedLang = getCookie("mi18nLang");
-    const isValidLang = Object.keys(translations).includes(storedLang);
 
+    const isValidLang = Object.keys(translations).includes(storedLang);
     if (isValidLang && storedLang !== currentLanguage) {
       dispatch(setLanguage(storedLang));
     } else if (!storedLang) {
-      // Không có cookie -> set default
-      setCookie("mi18nLang", "en-US");
-      dispatch(setLanguage("en-US"));
+      // ❗ Nếu chưa có cookie -> check IP để set locale
+      fetch("https://ipapi.co/json/")
+        .then((res) => res.json())
+        .then((data) => {
+          const countryCode = data.country; // eg: 'VN'
+          const detectedLang = countryToLang[countryCode] || "en-US";
+
+          setCookie("mi18nLang", detectedLang);
+          dispatch(setLanguage(detectedLang));
+        })
+        .catch(() => {
+          // Nếu gọi API lỗi, fallback tiếng Anh
+          setCookie("mi18nLang", "en-US");
+          dispatch(setLanguage("en-US"));
+        });
     }
   }, []);
 
