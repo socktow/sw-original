@@ -42,8 +42,8 @@ export const useLanguage = () => {
     if (isValidLang && storedLang !== currentLanguage) {
       dispatch(setLanguage(storedLang));
     } else if (!storedLang) {
-      // ❗ Nếu chưa có cookie -> check IP để set locale
-      fetch("https://ipapi.co/json/")
+      // ❗ Nếu chưa có cookie -> check IP để set locale qua API nội bộ
+      fetch("/api/public/ip-detect")
         .then((res) => res.json())
         .then((data) => {
           const countryCode = data.country; // eg: 'VN'
