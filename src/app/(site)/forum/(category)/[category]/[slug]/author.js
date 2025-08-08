@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Author({ post }) {
   const [author, setAuthor] = useState(null);
@@ -8,7 +9,7 @@ export default function Author({ post }) {
 
   useEffect(() => {
     if (post.authorId) {
-      fetch(`/api//user/auth/me`)
+      fetch(`/api/public/profile/${post.authorId}`)
         .then(res => res.json())
         .then(data => {
           setAuthor(data.user);
@@ -41,9 +42,21 @@ export default function Author({ post }) {
       <div className="bg-white rounded-2xl shadow-xl p-6">
         <div className="text-center">
           <div className="relative mb-4">
-            <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto flex items-center justify-center text-white text-2xl font-bold">
-              {author?.username?.charAt(0)?.toUpperCase() || post.authorId?.toString().slice(-2)}
-            </div>
+            {author?.avatar ? (
+              <div className="w-20 h-20 rounded-full mx-auto overflow-hidden">
+                <Image
+                  src={author.avatar}
+                  alt={author.username || 'Avatar'}
+                  width={80}
+                  height={80}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ) : (
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto flex items-center justify-center text-white text-2xl font-bold">
+                {author?.username?.charAt(0)?.toUpperCase() || post.authorId?.toString().slice(-2)}
+              </div>
+            )}
             <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white"></div>
           </div>
           
@@ -81,7 +94,6 @@ export default function Author({ post }) {
 
       {/* Author Stats */}
       <div className="bg-white rounded-2xl shadow-xl p-6">
-        <h3 className="text-lg font-bold text-gray-800 mb-4">Thống kê</h3>
         <div className="space-y-3">
           <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
             <div className="flex items-center gap-3">
@@ -93,26 +105,6 @@ export default function Author({ post }) {
             <span className="text-sm text-gray-500">
               {author?.createdAt ? new Date(author.createdAt).toLocaleDateString('vi-VN') : 'N/A'}
             </span>
-          </div>
-          
-          <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
-                <i className="fas fa-trophy text-green-600 text-sm" />
-              </div>
-              <span className="text-gray-700">Điểm</span>
-            </div>
-            <span className="text-sm text-gray-500">0</span>
-          </div>
-          
-          <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                <i className="fas fa-star text-purple-600 text-sm" />
-              </div>
-              <span className="text-gray-700">Cấp độ</span>
-            </div>
-            <span className="text-sm text-gray-500">Mới</span>
           </div>
         </div>
       </div>
@@ -140,32 +132,6 @@ export default function Author({ post }) {
           </div>
         </div>
       </div>
-
-      {/* Contact Info */}
-      {author && (
-        <div className="bg-white rounded-2xl shadow-xl p-6">
-          <h3 className="text-lg font-bold text-gray-800 mb-4">Liên hệ</h3>
-          <div className="space-y-3">
-            {author.email && (
-              <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <i className="fas fa-envelope text-blue-600 text-sm" />
-                </div>
-                <span className="text-sm text-gray-700">{author.email}</span>
-              </div>
-            )}
-            
-            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-              <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
-                <i className="fas fa-clock text-green-600 text-sm" />
-              </div>
-              <span className="text-sm text-gray-700">
-                Hoạt động {new Date().toLocaleDateString('vi-VN')}
-              </span>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 } 

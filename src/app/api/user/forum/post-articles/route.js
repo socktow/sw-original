@@ -27,7 +27,7 @@ export async function POST(request) {
       mainCategory,
       subCategory,
       authorId,
-      imageUrl: imageUrl || "",
+      imageUrl: imageUrl?.trim() || null,
     });
     await forum.save();
     return Response.json({ success: true, post: forum });

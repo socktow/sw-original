@@ -23,6 +23,7 @@ export async function getUserFromToken() {
 
     return {
       id: dbUser._id.toString(),
+      customId: dbUser.customId,
       username: dbUser.username,
       email: dbUser.email,
       swcoin: dbUser.swcoin,
