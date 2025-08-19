@@ -1,6 +1,11 @@
 {
-  "title": "Welcome",
-  "description": "This is the home page.",
+  "title": "Welcome to SoulWorker Online",
+  "description": "Join the adventure and fight alongside your friends!",
+  "heroButton": "Start Now",
+  "featuresTitle": "Game Features",
+  "feature1": "Epic Battles",
+  "feature2": "Unique Characters",
+  "feature3": "Exciting Events",
   "signin": {
     "title": "Sign In",
     "description": "Please enter your email and password to log in.",
